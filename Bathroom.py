@@ -4,14 +4,14 @@ from time import time
 
 def main():
 	file = open("C-small-practice-1.in", "r")
-	outputFile = open("output1.txt", "w")
+	outputFile = open("output.txt", "w")
 	testCases = int(file.readline())
 	t1 = time()
 
 	n = []
 	k = []
 
-	for x in range(98, testCases):
+	for x in range(0, testCases):
 		line = file.readline().split()
 		n.append(int(line[0]))
 		k.append(int(line[1]))
@@ -26,9 +26,7 @@ def solve(n, k):
 	stalls = []
 	assignValues(stalls, n)
 	for x in range(0, k):
-		print(str(x) + " de " + str(k) + ". Total orinales = " + str(n))
 		index = searchBetterStall(stalls)
-		print("orinal escogido = " + str(index + 1))
 		if x != k -1:
 			stalls[index][2] = True
 		else:
@@ -38,8 +36,8 @@ def solve(n, k):
 
 def analyze(n, k, parts, part):
 	outputFile = open("output1.txt", "w")
-	starting = part * 2 / parts
-	finalize = (part + 1) * 2 / parts 
+	starting = part * 100 / parts
+	finalize = (part + 1) * 100 / parts 
 	for x in range(starting, finalize):
 		solutionA, solutionB = solve(n[x], k[x])
 		output = "Case #{0}: {1} {2}\n".format(x+1, solutionA, solutionB)
